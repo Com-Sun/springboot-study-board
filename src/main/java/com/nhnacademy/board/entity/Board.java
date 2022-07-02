@@ -1,5 +1,7 @@
 package com.nhnacademy.board.entity;
 
+import com.nhnacademy.board.domain.dto.board.CreateBoardRequest;
+import com.nhnacademy.board.domain.dto.board.ModifyBoardRequest;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,4 +40,16 @@ public class Board {
 
     @Column(name = "title")
     private String title;
+
+    public Board(Member member, CreateBoardRequest createBoardRequest) {
+        this.member = member;
+        this.content = createBoardRequest.getContent();
+        this.title = createBoardRequest.getTitle();
+        this.createdDate = LocalDateTime.now();
+    }
+
+    public void modifyBoard(ModifyBoardRequest modifyBoardRequest) {
+        this.content = modifyBoardRequest.getContent();
+        this.title = modifyBoardRequest.getTitle();
+    }
 }
