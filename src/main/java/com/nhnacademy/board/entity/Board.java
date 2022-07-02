@@ -26,7 +26,7 @@ public class Board {
     private Long postNum;
 
     @ManyToOne
-    @JoinColumn(name = "writer_emailr")
+    @JoinColumn(name = "writer_email")
     private Member member;
 
     @Column(name = "created_date")
