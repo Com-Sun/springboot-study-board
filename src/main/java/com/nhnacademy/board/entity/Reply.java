@@ -1,5 +1,7 @@
 package com.nhnacademy.board.entity;
 
+import com.nhnacademy.board.domain.dto.reply.request.CreateReplyRequest;
+import com.nhnacademy.board.domain.dto.reply.request.ModifyReplyRequest;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,4 +40,16 @@ public class Reply {
 
     @Column
     private String content;
+
+    public Reply(Board board, CreateReplyRequest createReplyRequest) {
+        this.board = board;
+        this.content = createReplyRequest.getContent();
+        this.replier = createReplyRequest.getReplier();
+        this.createdDate = LocalDateTime.now();
+    }
+
+    public void modifyReply(ModifyReplyRequest modifyReplyRequest) {
+        this.content = modifyReplyRequest.getContent();
+        this.modifiedDate = LocalDateTime.now();
+    }
 }
