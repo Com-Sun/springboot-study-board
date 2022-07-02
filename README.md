@@ -19,3 +19,5 @@
   - 다대다 양방향 맵핑
 - Spring Security
 - Redis Session
+
+![](./img/board.png)
